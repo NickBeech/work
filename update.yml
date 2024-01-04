@@ -1,0 +1,12 @@
+---
+- name: Update all Infa Servers
+  hosts: servers
+  remote_user: ec2-user
+  become: yes
+  gather_facts: false
+  become_method: sudo
+  tasks:
+    - name: Update All programs
+      ansible.builtin.yum:
+        name: '*'
+        state: latest
